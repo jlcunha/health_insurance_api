@@ -26,6 +26,9 @@ def health_insurance_predict():
         # Instantiate Rossmann class
         pipeline = HealthInsurance()
         
+        # copy the original data
+        df_raw = test_raw.copy()
+        
         # data cleaning
         df1 = pipeline.feature_engineering( test_raw )
         
@@ -33,7 +36,7 @@ def health_insurance_predict():
         df2 = pipeline.pre_processing( df1 )
         
         # prediction
-        df_response = pipeline.get_prediction( model, test_raw, df2 )
+        df_response = pipeline.get_prediction( model, df_raw, df2 )
         
         return df_response
     
